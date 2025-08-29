@@ -6,7 +6,7 @@ import Image from "next/image"
 import { useState } from "react"
 
 export function HeroSection() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [_, setIsOpen] = useState(false)
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)

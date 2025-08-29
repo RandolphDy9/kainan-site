@@ -17,7 +17,9 @@ export const metadata: Metadata = {
   title: "Kainan - A Place to Eat | Authentic Filipino Restaurant",
   description:
     "Experience authentic Filipino cuisine at Kainan, a family-owned restaurant in Shediac, NB. Serving traditional dishes with love and warmth.",
-  generator: "v0.app",
+  icons: {
+    icon: "/images/favicon.jpg", // Add favicon here
+  }
 }
 
 export default function RootLayout({

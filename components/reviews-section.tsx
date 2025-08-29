@@ -6,7 +6,7 @@ const reviews = [
     id: 1,
     name: "Maria Santos",
     review:
-      "Absolutely amazing! The pancit and lumpia remind me of my grandmother's cooking. This place feels like home.",
+      "Absolutely amazing! The pancit and lumpia reminded me of my grandmas cooking. This place feels like home.",
     rating: 5,
   },
   {
@@ -53,7 +53,7 @@ export function ReviewsSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">What Our Customers Say</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Don't just take our word for it - hear from our satisfied customers who keep coming back for more authentic
+            Don&apos;t just take our word for it - hear from our satisfied customers who keep coming back for more authentic
             Filipino flavors.
           </p>
         </div>

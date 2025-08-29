@@ -1,4 +1,4 @@
-import { Facebook, Heart } from "lucide-react"
+import { Facebook } from "lucide-react"
 
 export function Footer() {
   return (

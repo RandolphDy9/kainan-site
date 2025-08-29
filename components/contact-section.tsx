@@ -20,7 +20,7 @@ export function ContactSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Visit Us Today</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Come experience authentic Filipino hospitality and cuisine. We can't wait to welcome you to our family table.
+            Come experience authentic Filipino hospitality and cuisine. We can&apos;t wait to welcome you to our family table.
           </p>
         </div>
 
