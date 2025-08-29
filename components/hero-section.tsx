@@ -3,17 +3,13 @@
 import { Button } from "@/components/ui/button"
 import { Facebook } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
 
 export function HeroSection() {
-  const [_, setIsOpen] = useState(false)
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
-    setIsOpen(false)
   }
 
   return (

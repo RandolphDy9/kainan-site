@@ -50,24 +50,29 @@ export function ReviewsSection() {
   return (
     <section className="py-16 px-4 bg-card">
       <div className="max-w-6xl mx-auto">
+        {/* Section header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">What Our Customers Say</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
+            What Our Customers Say
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Don&apos;t just take our word for it - hear from our satisfied customers who keep coming back for more authentic
-            Filipino flavors.
+            Don&apos;t just take our word for it — hear from our satisfied customers who keep coming back for more authentic Filipino flavors.
           </p>
         </div>
 
+        {/* Reviews grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review) => (
             <Card key={review.id} className="bg-background">
               <CardContent className="p-6">
+                {/* Star ratings */}
                 <div className="flex items-center mb-4">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  {[...Array(review.rating)].map((_, index) => (
+                    <Star key={index} className="w-5 h-5 fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="text-foreground mb-4 text-pretty">"{review.review}"</p>
+                {/* Review text */}
+                <p className="text-foreground mb-4 text-pretty">{`"${review.review}"`}</p>
                 <p className="font-semibold text-primary">- {review.name}</p>
               </CardContent>
             </Card>
