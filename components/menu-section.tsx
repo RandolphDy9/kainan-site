@@ -2,12 +2,8 @@
 
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Dialog,
-  DialogContent,
-  DialogOverlay,
-} from "@/components/ui/dialog"
 import Image from "next/image"
+import { ImageModal } from "./ui/image-modal"
 
 const menuPages = [
   {
@@ -37,12 +33,14 @@ const menuPages = [
 ]
 
 export function MenuSection() {
-  const [open, setOpen] = useState(false)
-  const [activeImage, setActiveImage] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
 
-  const handleOpen = (image: string) => {
-    setActiveImage(image)
-    setOpen(true)
+  const handleImageClick = (src: string, alt: string) => {
+    setSelectedImage({ src, alt })
+  }
+
+  const closeModal = () => {
+    setSelectedImage(null)
   }
 
   return (
@@ -62,7 +60,7 @@ export function MenuSection() {
             <Card
               key={page.id}
               className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => handleOpen(page.image)}
+              onClick={() => handleImageClick(page.image, page.title)}
             >
               <CardContent className="p-0">
                 <div className="relative aspect-[3/4]">
@@ -77,22 +75,16 @@ export function MenuSection() {
           ))}
         </div>
 
-        {/* Image Dialog with Dark Backdrop */}
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogOverlay className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
-          <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none">
-            {activeImage && (
-              <div className="relative w-full h-[80vh]">
-                <Image
-                  src={activeImage}
-                  alt="Enlarged menu image"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+        {/* Image Modal */}
+        {selectedImage && (
+          <ImageModal
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            isOpen={!!selectedImage}
+            onClose={closeModal}
+          />
+        )}
+
       </div>
     </section>
   )
