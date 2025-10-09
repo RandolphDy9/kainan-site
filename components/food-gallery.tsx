@@ -44,12 +44,16 @@ export function FoodGallery() {
               className={`relative overflow-hidden group cursor-pointer border-0 shadow-lg hover:shadow-2xl transition-all duration-500 ${image.span}`}
             >
               <div className="relative w-full h-full min-h-[200px] md:min-h-0">
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={`Filipino dish ${index + 1}`}
-                  fill
-                  className="object-contain md:object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
-                />
+              <Image
+                src={image.src || "/placeholder.svg"}
+                alt={`Filipino dish ${index + 1}`}
+                fill
+                className="object-contain md:object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
+                loading={index === 0 ? "eager" : "lazy"} // Only load the first image eagerly
+                placeholder="blur"
+                blurDataURL="/images/placeholder-blur.jpg"
+                quality={75}
+              />
 
                 <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
               </div>
