@@ -14,7 +14,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-card to-background">
-      <div className="absolute inset-0 bg-[url('/images/food-1.jpg')] bg-cover bg-center" />
+      <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center" />
 
       {/* Global Dark Overlay */}
       <div className="absolute inset-0 bg-black/30" />
