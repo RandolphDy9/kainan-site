@@ -5,7 +5,6 @@ import { MenuSection } from "@/components/menu-section"
 import { ReviewsSection } from "@/components/reviews-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-import { CrewSection } from "@/components/crew-section"
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
       </div>
 
       <FoodGallery />
-      <CrewSection />
 
       <div id="menu">
         <MenuSection />

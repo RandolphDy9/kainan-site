@@ -51,19 +51,24 @@ export function ReviewsSection() {
     <section className="py-16 px-4 bg-card">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-            What Our Customers Say
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Don&apos;t just take our word for it — hear from our satisfied customers who keep coming back for more authentic Filipino flavors.
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-block">
+            <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2 block">
+              Customer Reviews
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+              What Our Customers Say
+            </h2>
+          </div>
+          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Real stories, real flavors! 😋 — hear from our satisfied customers who keep coming back for more.
           </p>
         </div>
 
         {/* Reviews grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review) => (
-            <Card key={review.id} className="bg-background">
+            <Card key={review.id} className="bg-background hover:shadow-lg">
               <CardContent className="p-6">
                 {/* Star ratings */}
                 <div className="flex items-center mb-4">

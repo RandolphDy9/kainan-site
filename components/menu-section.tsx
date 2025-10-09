@@ -9,25 +9,25 @@ const menuPages = [
   {
     id: 1,
     title: "Breakfast & Classics",
-    image: "/images/menu-1.webp",
+    image: "/images/menu/menu-1.png",
     description: "Traditional breakfast, pancakes, omelettes, sandwiches, burgers, and handhelds",
   },
   {
     id: 2,
     title: "Filipino Specialties",
-    image: "/images/menu-2.webp",
+    image: "/images/menu/menu-2.png",
     description: "Authentic silogs, ulam, fried specialties, and sizzling dishes",
   },
   {
     id: 3,
     title: "Noodles & Soups",
-    image: "/images/menu-3.webp",
+    image: "/images/menu/menu-3.png",
     description: "Traditional noodle dishes, sides, and hearty Filipino soups",
   },
   {
     id: 4,
     title: "Desserts & Group Meals",
-    image: "/images/menu-4.webp",
+    image: "/images/menu/menu-4.png",
     description: "Sweet treats, beverages, and family-style group meal sets",
   },
 ]
@@ -47,10 +47,17 @@ export function MenuSection() {
     <section id="menu" className="py-16 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Menu</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Discover our authentic Filipino dishes, made with traditional recipes passed down through generations.
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-block">
+            <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2 block">
+              Taste of Tradition
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+              Our Signature Menu
+            </h2>
+          </div>
+          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Experience the rich, authentic flavors of the Philippines. Each dish is carefully prepared with heritage and love, bringing generations of culinary tradition to your table. ❤️🍴
           </p>
         </div>
 

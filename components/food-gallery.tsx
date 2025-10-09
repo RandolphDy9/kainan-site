@@ -2,66 +2,79 @@ import Image from "next/image"
 import { Card } from "@/components/ui/card"
 
 const foodImages = [
-  {
-    src: "/images/food-1.jpg",
-    alt: "Assorted Filipino dishes including sisig, fried chicken, and traditional soups",
-    title: "Family Feast",
-  },
-  {
-    src: "/images/food-2.jpg",
-    alt: "Crispy pork belly (lechon kawali) with pickled vegetables",
-    title: "Crispy Pork Belly",
-  },
-  {
-    src: "/images/food-3.jpg",
-    alt: "Sizzling sisig with fried egg on cast iron plate",
-    title: "Sizzling Sisig",
-  },
-  {
-    src: "/images/food-4.jpg",
-    alt: "Golden fried chicken with lemon and dipping sauce",
-    title: "Fried Chicken",
-  },
-  {
-    src: "/images/food-5.jpg",
-    alt: "Beef bone marrow soup (bulalo) with corn and vegetables",
-    title: "Beef Bulalo",
-  },
-  {
-    src: "/images/food-6.jpg",
-    alt: "Colorful Filipino dessert drink with Kainan logo",
-    title: "Signature Drink",
-  },
+  { src: "/images/highlights/food-1.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-2.png", span: "md:row-span-2" },
+  { src: "/images/highlights/food-3.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-4.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-5.png", span: "md:row-span-2" },
+  { src: "/images/highlights/food-6.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-7.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-8.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-9.jpg", span: "md:row-span-2" },
 ]
 
 export function FoodGallery() {
   return (
-    <section className="py-16 px-4 bg-card">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">Our Delicious Dishes</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Feast your eyes on our authentic Filipino cuisine, prepared fresh daily with traditional recipes passed down
-            through generations.
+    <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
+      {/* Decorative background */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-block">
+            <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2 block">
+              Culinary Excellence
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+              Our Delicious Dishes
+            </h2>
+          </div>
+          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Feast your eyes on our authentic Filipino cuisine 🇵🇭, prepared fresh daily with traditional recipes passed down through generations ❤️🍴
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Masonry Grid - show on web, hide on mobile */}
+        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 auto-rows-auto md:auto-rows-[280px]">
           {foodImages.map((image, index) => (
-            <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
-              <div className="relative aspect-square">
+            <Card
+              key={index}
+              className={`relative overflow-hidden group cursor-pointer border-0 shadow-lg hover:shadow-2xl transition-all duration-500 ${image.span}`}
+            >
+              <div className="relative w-full h-full min-h-[200px] md:min-h-0">
                 <Image
                   src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
+                  alt={`Filipino dish ${index + 1}`}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain md:object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-semibold text-lg drop-shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {image.title}
-                  </h3>
-                </div>
+
+                <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Masonry Grid - show on mobile, hide on web */}
+        <div className="grid md:hidden grid-cols-1 gap-5">
+          {foodImages.map((image, index) => (
+            <Card
+              key={index}
+              className={`relative overflow-hidden group cursor-pointer border-0 shadow-lg hover:shadow-2xl transition-all duration-500 ${image.span}`}
+            >
+              <div className="relative w-full h-auto">
+                <Image
+                  src={image.src || "/placeholder.svg"}
+                  alt={`Filipino dish ${index + 1}`}
+                  width={1000} // optional fixed width for proper scaling
+                  height={1000} // optional fixed height
+                  className="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+
+                {/* Corner accent */}
+                <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
               </div>
             </Card>
           ))}

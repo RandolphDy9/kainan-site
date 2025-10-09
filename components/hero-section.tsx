@@ -25,8 +25,8 @@ export function HeroSection() {
             <Image
               src="/images/logo.png"
               alt="Kainan - A Place to Eat"
-              width={300}
-              height={200}
+              width={200}
+              height={120}
               className="mx-auto mb-6 drop-shadow-lg"
               priority
             />
@@ -36,35 +36,38 @@ export function HeroSection() {
             🍽️ Welcome to <span className="text-[#F5B035]">Kainan</span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-6 max-w-2xl mx-auto text-gray-100">
+          <p className="text-xl md:text-2xl mb-2 max-w-2xl mx-auto text-gray-100">
             Savor the true taste of the Philippines 🇵🇭
           </p>
 
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200 leading-relaxed">
-            Indulge in authentic Filipino dishes, lovingly prepared with recipes
-            passed down through generations. A cozy place where family, tradition,
-            and flavor come together.
+            Authentic Filipino dishes made with love and tradition — where family and flavor come together.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 shadow-lg" onClick={() => scrollToSection("menu")}>
-              View Our Menu
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
+            {/* Menu Button */}
+            <Button
+              size="lg"
+              className="w-full sm:flex-1 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 shadow-lg"
+              onClick={() => scrollToSection("menu")}
+            >
+              🍽️ View Our Menu
             </Button>
 
+            {/* Facebook Link as Button */}
             <Button
-              variant="outline"
-              size="lg"
-              className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground px-8 py-3 bg-transparent"
               asChild
+              size="lg"
+              className="w-full sm:flex-1 bg-secondary text-white px-6 py-3 shadow-lg hover:bg-secondary/90 transition-colors duration-200"
             >
               <a
                 href="https://www.facebook.com/profile.php?id=100091358628559"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2 font-semibold text-lg w-full"
               >
                 <Facebook className="w-5 h-5" />
-                Follow Us
+                Follow Us On Facebook
               </a>
             </Button>
           </div>

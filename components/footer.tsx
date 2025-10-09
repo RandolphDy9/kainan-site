@@ -2,9 +2,10 @@ import { Facebook } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-card py-12 px-4">
+    <footer className="bg-card py-12 px-4 border">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left section */}
           <div>
             <h3 className="text-lg font-semibold text-card-foreground mb-4">Kainan - A Place to Eat</h3>
             <p className="text-muted-foreground text-pretty mb-4">
@@ -21,11 +22,29 @@ export function Footer() {
               Follow us on Facebook
             </a>
           </div>
+
+          {/* Right section (optional for future info) */}
           <div></div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-sm text-muted-foreground mt-2">© 2025 <b>Kainan: A place to eat</b> Restaurant. All rights reserved.</p>
+        {/* Bottom footer */}
+        <div className="border-t border-border mt-8 pt-8 text-center space-y-2 flex justify-between">
+          <p className="text-sm text-muted-foreground text-left">
+            © 2025 <b>Kainan: A Place to Eat</b> Restaurant. All rights reserved.
+          </p>
+
+          {/* Developer credit */}
+          <p className="text-xs text-muted-foreground text-right">
+            Built by{" "}
+            <a
+              href="https://www.randolphdy.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 font-medium transition-colors"
+            >
+              Randolph Dy
+            </a>
+          </p>
         </div>
       </div>
     </footer>
