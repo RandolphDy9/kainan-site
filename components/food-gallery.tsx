@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Card } from "@/components/ui/card"
 
 const foodImages = [
   { src: "/images/highlights/food-1.jpg", span: "md:row-span-2" },
@@ -9,7 +8,7 @@ const foodImages = [
   { src: "/images/highlights/food-5.png", span: "md:row-span-2" },
   { src: "/images/highlights/food-6.jpg", span: "md:row-span-2" },
   { src: "/images/highlights/food-7.jpg", span: "md:row-span-2" },
-  { src: "/images/highlights/food-8.jpg", span: "md:row-span-2" },
+  { src: "/images/highlights/food-8.png", span: "md:row-span-2" },
   { src: "/images/highlights/food-9.jpg", span: "md:row-span-2" },
 ]
 
@@ -39,34 +38,34 @@ export function FoodGallery() {
         {/* Masonry Grid - show on web, hide on mobile */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 auto-rows-auto md:auto-rows-[280px]">
           {foodImages.map((image, index) => (
-            <Card
+            <div
               key={index}
-              className={`relative overflow-hidden group cursor-pointer border-0 shadow-lg hover:shadow-2xl transition-all duration-500 ${image.span}`}
+              className={`relative overflow-hidden group border shadow-lg rounded-xl ${image.span}`}
             >
               <div className="relative w-full h-full min-h-[200px] md:min-h-0">
               <Image
                 src={image.src || "/placeholder.svg"}
                 alt={`Filipino dish ${index + 1}`}
                 fill
-                className="object-contain md:object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
+                className="object-contain md:object-cover w-full h-full"
                 loading={index === 0 ? "eager" : "lazy"} // Only load the first image eagerly
                 placeholder="blur"
                 blurDataURL="/images/placeholder-blur.jpg"
                 quality={75}
               />
 
-                <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
+                <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-amber-500" />
               </div>
-            </Card>
+            </div>
           ))}
         </div>
 
         {/* Masonry Grid - show on mobile, hide on web */}
         <div className="grid md:hidden grid-cols-1 gap-5">
           {foodImages.map((image, index) => (
-            <Card
+            <div
               key={index}
-              className={`relative overflow-hidden group cursor-pointer border-0 shadow-lg hover:shadow-2xl transition-all duration-500 ${image.span}`}
+              className={`relative overflow-hidden group border-0 shadow-lg rounded-xl ${image.span}`}
             >
               <div className="relative w-full h-auto">
                 <Image
@@ -74,13 +73,13 @@ export function FoodGallery() {
                   alt={`Filipino dish ${index + 1}`}
                   width={1000} // optional fixed width for proper scaling
                   height={1000} // optional fixed height
-                  className="w-full h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-auto object-contain"
                 />
 
                 {/* Corner accent */}
                 <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-amber-500 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" />
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>
