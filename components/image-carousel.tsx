@@ -64,7 +64,7 @@ export default function ImageCarousel() {
         }
         return prev + 1;
       });
-    }, 3000);
+    }, 7000);
 
     return () => clearInterval(autoSlideInterval);
   }, [maxIndex]);
