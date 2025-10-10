@@ -1,10 +1,10 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { FoodGallery } from "@/components/food-gallery"
 import { MenuSection } from "@/components/menu-section"
 import { ReviewsSection } from "@/components/reviews-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import ImageCarousel from "@/components/image-carousel"
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <HeroSection />
       </div>
 
-      <FoodGallery />
+      <ImageCarousel />
 
       <div id="menu">
         <MenuSection />
