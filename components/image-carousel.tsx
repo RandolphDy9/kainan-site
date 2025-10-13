@@ -96,19 +96,22 @@ export default function ImageCarousel() {
       <div className="absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 space-y-4">
-            <div className="inline-block">
-              <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2 block">
-                Culinary Excellence
-              </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
-                Our Delicious Dishes
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-              Feast your eyes on our authentic Filipino cuisine 🇵🇭, prepared fresh daily with traditional recipes passed down through generations ❤️🍴
+          <div className="text-center mb-20 px-4 sm:px-6 lg:px-8">
+            <h2
+              className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
+                dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
+                bg-clip-text text-transparent 
+                text-4xl sm:text-5xl md:text-7xl
+                leading-tight max-w-5xl mx-auto"
+            >
+              Featured menu items.
+            </h2>
+
+            <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
+              text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
+              Highlighting dishes that will always satisfy
             </p>
           </div>
 

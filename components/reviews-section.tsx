@@ -51,17 +51,20 @@ export function ReviewsSection() {
     <section className="py-16 px-4 bg-card">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16 space-y-4">
-          <div className="inline-block">
-            <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2 block">
-              Customer Reviews
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
-              What Our Customers Say
-            </h2>
-          </div>
-          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-            Real stories, real flavors! 😋 — hear from our satisfied customers who keep coming back for more.
+        <div className="text-center mb-20 px-4 sm:px-6 lg:px-8">
+          <h2
+            className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
+              dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
+              bg-clip-text text-transparent 
+              text-4xl sm:text-5xl md:text-6xl
+              leading-tight max-w-5xl mx-auto"
+          >
+           When customers turn into family.
+          </h2>
+
+          <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
+            text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
+            Don&apos;t believe us? Believe them! True experiences from our Kainan Family.
           </p>
         </div>
 

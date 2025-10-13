@@ -3,14 +3,13 @@ import { Facebook } from "lucide-react"
 export function Footer() {
   return (
     <footer className="bg-card py-12 px-4 border">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left section */}
           <div>
             <h3 className="text-lg font-semibold text-card-foreground mb-4">Kainan - A Place to Eat</h3>
             <p className="text-muted-foreground text-pretty mb-4">
-              Authentic Filipino cuisine crafted with love by our family. Experience the warmth of Filipino hospitality
-              in every dish.
+              Introduce and re-introduce the flavours of the Philippines, one dish at a time.
             </p>
             <a
               href="https://www.facebook.com/profile.php?id=100091358628559"

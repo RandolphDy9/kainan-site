@@ -33,15 +33,15 @@ export function HeroSection() {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-balance drop-shadow-md">
-            🍽️ Welcome to <span className="text-[#F5B035]">Kainan</span>
+            Welcome to <span className="text-[#F5B035]">Kainan</span>
           </h1>
 
           <p className="text-xl md:text-2xl mb-2 max-w-2xl mx-auto text-gray-100">
-            Savor the true taste of the Philippines 🇵🇭
+            🇵🇭 Taste the flavours of the Philippines
           </p>
 
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200 leading-relaxed">
-            Authentic Filipino dishes made with love and tradition — where family and flavor come together.
+            Authentic Filipino dishes made with love and tradition
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
@@ -51,7 +51,7 @@ export function HeroSection() {
               className="w-full sm:flex-1 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 shadow-lg"
               onClick={() => scrollToSection("menu")}
             >
-              🍽️ View Our Menu
+              View Our Menu
             </Button>
 
             {/* Facebook Link as Button */}

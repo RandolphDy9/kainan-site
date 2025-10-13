@@ -5,6 +5,8 @@ import { ReviewsSection } from "@/components/reviews-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import ImageCarousel from "@/components/image-carousel"
+import LookInside from "@/components/look-inside-section"
+import TraySection from "@/components/tray-section"
 
 export default function Home() {
   return (
@@ -16,10 +18,13 @@ export default function Home() {
       </div>
 
       <ImageCarousel />
+      <TraySection />
 
       <div id="menu">
         <MenuSection />
       </div>
+
+      <LookInside />
 
       <div id="reviews">
         <ReviewsSection />

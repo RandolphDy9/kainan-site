@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Clock, Facebook, Dog, TreePine } from "lucide-react"
+import { MapPin, Clock, Facebook, Dog, TreePine, ParkingSquare } from "lucide-react"
 import Image from "next/image"
 
 const hours = [
@@ -17,19 +17,27 @@ export function ContactSection() {
     <section id="contact" className="py-16 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
-          <div className="inline-block">
-            <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2 block">
-              Come and eat
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+        <section className="text-center mb-20 px-4">
+          <div className="inline-block space-y-4">
+            {/* <span className="text-amber-600 dark:text-amber-500 font-semibold text-sm uppercase tracking-widest">
               Visit Our Restaurant
+            </span> */}
+
+            <h2 className="text-3xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+              What are you waiting for? <br className="hidden md:block" />
+              We’re just as excited to welcome you!
             </h2>
+
+            <div className="space-y-1">
+              <span className="block text-amber-700 dark:text-amber-400 text-xl md:text-3xl font-semibold">
+                Kita-kits, Kainan Family!
+              </span>
+              <span className="block text-muted-foreground text-sm md:text-base italic">
+                (See you soon, Kainan Family!)
+              </span>
+            </div>
           </div>
-          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-            Savor authentic Filipino flavors 🇵🇭🍴 and experience warm, heartfelt hospitality at our family table 🏠✨.
-          </p>
-        </div>
+        </section>
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-[#FCE183] p-8 rounded-xl">
@@ -68,6 +76,15 @@ export function ContactSection() {
                   Facebook
                 </a>
               </div>
+              <div>
+                <p className="font-semibold text-foreground">Email:</p>
+                <a
+                  href="mailto:kainanrestaurantinc@gmail.com"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+                >
+                  kainanrestaurantinc@gmail.com
+                </a>
+              </div>
             </CardContent>
           </Card>
 
@@ -90,7 +107,6 @@ export function ContactSection() {
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-muted-foreground mt-4 italic">*Hours might differ</p>
             </CardContent>
           </Card>
 
@@ -105,16 +121,15 @@ export function ContactSection() {
             <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
                 <TreePine className="w-5 h-5 text-accent" />
-                <span className="text-foreground">Outdoor seating</span>
+                <span className="text-foreground">Outdoor seating <br/><span className="text-muted-foreground text-xs">(patio open during summer season only)</span></span>
               </div>
               <div className="flex items-center gap-3">
                 <Dog className="w-5 h-5 text-accent" />
                 <span className="text-foreground">Dogs allowed outside</span>
               </div>
-              <div className="mt-6 p-4 bg-card rounded-lg">
-                <p className="text-sm text-card-foreground text-pretty">
-                  Enjoy your meal in our comfortable outdoor seating area, perfect for families and pet owners alike!
-                </p>
+              <div className="flex items-center gap-3">
+                <ParkingSquare className="w-8 h-8 text-accent" />
+                <span className="text-foreground">Customer parking available <span className="text-muted-foreground text-xs">(entrance at the side of the building)</span></span>
               </div>
             </CardContent>
           </Card>
