@@ -8,27 +8,23 @@ import { ImageModal } from "./ui/image-modal"
 const menuPages = [
   {
     id: 1,
-    title: "Breakfast & Classics",
+    title: "Menu 1",
     image: "/images/menu/menu-1.png",
-    description: "Traditional breakfast, pancakes, omelettes, sandwiches, burgers, and handhelds",
   },
   {
     id: 2,
-    title: "Filipino Specialties",
+    title: "Menu 2",
     image: "/images/menu/menu-2.png",
-    description: "Authentic silogs, ulam, fried specialties, and sizzling dishes",
   },
   {
     id: 3,
-    title: "Noodles & Soups",
+    title: "Menu 3",
     image: "/images/menu/menu-3.png",
-    description: "Traditional noodle dishes, sides, and hearty Filipino soups",
   },
   {
     id: 4,
-    title: "Desserts & Group Meals",
+    title: "Menu 4",
     image: "/images/menu/menu-4.png",
-    description: "Sweet treats, beverages, and family-style group meal sets",
   },
 ]
 
@@ -81,10 +77,6 @@ export function MenuSection() {
                 <div className="relative aspect-[3/4]">
                   <Image src={page.image || "/placeholder.svg"} alt={page.title} fill className="object-contain" />
                 </div>
-                {/* <div className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{page.title}</h3>
-                  <p className="text-muted-foreground text-pretty">{page.description}</p>
-                </div> */}
               </CardContent>
             </Card>
           ))}

@@ -25,7 +25,7 @@ export function ContactSection() {
 
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
               What are you waiting for? <br className="hidden md:block" />
-              We’re just as excited to welcome you!
+              We&apos;re just as excited to welcome you!
             </h2>
 
             <div className="space-y-1">

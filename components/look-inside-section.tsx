@@ -1,4 +1,8 @@
+"use client"
+
 import Image from 'next/image';
+import { ImageModal } from './ui/image-modal';
+import { useState } from 'react';
 
 export default function LookInside() {
   const foodImages = [
@@ -8,6 +12,16 @@ export default function LookInside() {
     { src: "/images/inside/inside-4.jpg" },
     { src: "/images/inside/inside-5.jpg" },
   ];
+
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
+
+  const handleImageClick = (src: string, alt: string) => {
+    setSelectedImage({ src, alt })
+  }
+
+  const closeModal = () => {
+    setSelectedImage(null)
+  }
 
   return (
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
@@ -41,8 +55,9 @@ export default function LookInside() {
               src={foodImages[0].src}
               alt="Inside restaurant view 1"
               fill
-              className="object-cover"
+              className="object-cover cursor-pointer"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+              onClick={() => handleImageClick(foodImages[0].src, "Inside restaurant view 1")}
             />
           </div>
           
@@ -52,8 +67,9 @@ export default function LookInside() {
               src={foodImages[1].src}
               alt="Inside restaurant view 2"
               fill
-              className="object-cover"
+              className="object-cover cursor-pointer"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+              onClick={() => handleImageClick(foodImages[1].src, "Inside restaurant view 2")}
             />
           </div>
           
@@ -63,8 +79,9 @@ export default function LookInside() {
               src={foodImages[2].src}
               alt="Inside restaurant view 3"
               fill
-              className="object-cover"
+              className="object-cover cursor-pointer"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+              onClick={() => handleImageClick(foodImages[2].src, "Inside restaurant view 3")}
             />
           </div>
           
@@ -74,8 +91,9 @@ export default function LookInside() {
               src={foodImages[3].src}
               alt="Inside restaurant view 4"
               fill
-              className="object-cover"
+              className="object-cover cursor-pointer"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+              onClick={() => handleImageClick(foodImages[3].src, "Inside restaurant view 4")}
             />
           </div>
           
@@ -85,11 +103,22 @@ export default function LookInside() {
               src={foodImages[4].src}
               alt="Inside restaurant view 5"
               fill
-              className="object-cover"
+              className="object-cover cursor-pointer"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+              onClick={() => handleImageClick(foodImages[4].src, "Inside restaurant view 5")}
             />
           </div>
         </div>
+
+        {/* Modal */}
+        {selectedImage && (
+          <ImageModal
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            isOpen={!!selectedImage}
+            onClose={closeModal}
+          />
+        )}
       </div>
     </section>
   );

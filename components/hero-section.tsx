@@ -20,13 +20,13 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-black/30" />
 
       <div className="relative z-10 px-4 max-w-4xl mx-auto">
-        <div className="bg-black/70 backdrop-blur-sm rounded-2xl p-6 sm:px-20 sm:py-8 text-center text-white shadow-xl">
+        <div className="bg-gradient-to-t from-black/70 to-black/90 backdrop-blur-sm rounded-2xl p-6 sm:px-20 sm:py-8 text-center text-white shadow-xl">
           <div className="mb-6">
             <Image
               src="/images/logo.png"
               alt="Kainan - A Place to Eat"
-              width={200}
-              height={120}
+              width={230}
+              height={150}
               className="mx-auto mb-6 drop-shadow-lg"
               priority
             />

@@ -39,12 +39,15 @@ export default function TraySection() {
         {/* Images layout */}
         <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {/* Left (wide image) */}
-          <div className="md:col-span-2 relative h-[250px] sm:h-[350px] md:h-[500px]">
+          <div 
+            className="md:col-span-2 relative h-[250px] sm:h-[350px] md:h-[500px] bg-[#FEFCE8] border rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
+            onClick={() => openModal(foodImages[1])}
+          >
             <Image
               src={foodImages[1].src}
               alt={foodImages[1].alt}
               fill
-              className="object-cover object-center transition-transform duration-300"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, 66vw"
               priority
             />
@@ -52,14 +55,14 @@ export default function TraySection() {
 
           {/* Right (portrait) */}
           <div
-            className="md:col-span-1 relative h-[450px] md:h-[500px] cursor-pointer group md:mt-0 mt-4"
+            className="md:col-span-1 relative h-[450px] md:h-[500px] bg-[#FEFCE8] border rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity md:mt-0 mt-4"
             onClick={() => openModal(foodImages[0])}
           >
             <Image
               src={foodImages[0].src}
               alt={foodImages[0].alt}
               fill
-              className="object-cover md:object-cover object-center"
+              className="object-contain"
               sizes="(max-width: 768px) 100vw, 33vw"
               priority
             />

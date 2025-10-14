@@ -10,7 +10,7 @@ export function Banner() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 60000);
+    }, 90000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -19,12 +19,12 @@ export function Banner() {
 
   return (
     <div className="sticky top-0 z-50 bg-[#D33640] text-white">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
         <div className="flex items-start sm:items-center justify-between gap-3">
           {/* Content */}
           <div className="flex-1 text-center sm:text-left space-y-1 sm:space-y-0">
             {/* Mobile: stacked vertically, Desktop: 2 rows */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between gap-1 sm:gap-4 text-[11px] sm:text-xs">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center sm:justify-start gap-1 sm:gap-4 text-sm sm:text-base">
               <div className="flex items-center gap-1 sm:flex-1">
                 <span className="font-semibold">🔒 Closed:</span>
                 <span>Oct 26 - Nov 3, 2025</span>
@@ -35,7 +35,7 @@ export function Banner() {
               </div>
               <div className="flex items-center gap-1 sm:flex-1">
                 <span className="font-semibold">🔒 Closed:</span>
-                <span>Dec 21, 2025 - Jan 4, 2026</span>
+                <span>Dec 21 - Jan 4, 2026</span>
               </div>
               <div className="flex items-center gap-1 sm:flex-1">
                 <span className="font-semibold">🎉 Reopening:</span>

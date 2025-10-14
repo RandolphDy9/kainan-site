@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { ImageModal } from "./ui/image-modal";
 
 export default function ImageCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -90,6 +91,16 @@ export default function ImageCarousel() {
     setTouchEnd(0);
   };
 
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
+
+  const handleImageClick = (src: string, alt: string) => {
+    setSelectedImage({ src, alt })
+  }
+
+  const closeModal = () => {
+    setSelectedImage(null)
+  }
+
   return (
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
       {/* Decorative background */}
@@ -159,7 +170,7 @@ export default function ImageCarousel() {
                     flex: `0 0 ${100 / slidesPerView}%`,
                   }}
                 >
-                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
                     <Image
                       src={image.src}
                       alt={`Food ${index + 1}`}
@@ -167,6 +178,7 @@ export default function ImageCarousel() {
                       className="object-contain"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       priority={index < slidesPerView}
+                      onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
                     />
                   </div>
                 </div>
@@ -211,6 +223,16 @@ export default function ImageCarousel() {
             />
           ))}
         </div>
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <ImageModal
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            isOpen={!!selectedImage}
+            onClose={closeModal}
+          />
+        )}
       </div>
     </section>
   );
