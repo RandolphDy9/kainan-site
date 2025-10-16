@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import ImageCarousel from "@/components/image-carousel"
 import LookInside from "@/components/look-inside-section"
 import TraySection from "@/components/tray-section"
+import WhoWeAre from "@/components/who-we-are"
 
 export default function Home() {
   return (
@@ -17,14 +18,25 @@ export default function Home() {
         <HeroSection />
       </div>
 
-      <ImageCarousel />
-      <TraySection />
+      <div id="highlights">
+        <ImageCarousel />
+      </div>
 
       <div id="menu">
         <MenuSection />
       </div>
 
-      <LookInside />
+      <div id="trays">
+        <TraySection />
+      </div>
+
+      <div id="lookinside">
+        <LookInside />
+      </div>
+
+      <div id="whoweare">
+        <WhoWeAre />
+      </div>
 
       <div id="reviews">
         <ReviewsSection />

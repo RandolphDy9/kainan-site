@@ -4,44 +4,44 @@ import { Star } from "lucide-react"
 const reviews = [
   {
     id: 1,
-    name: "Maria Santos",
+    name: "Kleyr Ombao",
     review:
-      "Absolutely amazing! The pancit and lumpia reminded me of my grandmas cooking. This place feels like home.",
+      "Absolutely enjoyed dining here. Service is quick and serves family style. Highly recommend their any of their sisig’s with a side of garlic fried rice. Chef’s kiss. Everything is made to order to food quality is great. 10/10 would visit again",
     rating: 5,
   },
   {
     id: 2,
-    name: "David Chen",
+    name: "Steve D",
     review:
-      "Best Filipino food in the Maritimes! The beef bulalo is incredible and the portions are generous. Highly recommend!",
+      "This is one of the best places in New Brunswick. The atmosphere is great. The staff were all phenomenal and friendly. The food was fantastic. The place was busy when we went but there was not a noticeable wait time for anything. If you are anywhere near Shediac you should definitely try it out.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Sarah MacDonald",
+    name: "Sheika Fateema",
     review:
-      "Such a warm and welcoming family restaurant. The sisig is phenomenal and the staff treats you like family.",
+      "For anyone craving Filipino food or just looking for a spot with good food and good vibes, I highly recommend this place. It’s no wonder I keep coming back.",
     rating: 5,
   },
   {
     id: 4,
-    name: "Miguel Rodriguez",
+    name: "Heather Walsh",
     review:
-      "Finally found authentic Filipino cuisine! The adobo chicken is perfect and the garlic fried rice is a must-try.",
+      "Best fried chicken we've had in years! The tofu dish was delicious-- we practically licked the plate clean. Rice noodle and veg combo also really good. Excellent service, really friendly folks and you have GOT to try the Ube (purple yam) cake. Omg amazing. ",
     rating: 5,
   },
   {
     id: 5,
-    name: "Jennifer Thompson",
+    name: "Edmar Alvarez",
     review:
-      "Love this place! Great food, friendly service, and reasonable prices. The crispy pata is absolutely delicious.",
+      "Authentic filipino food. I ordered sisig here, and it definitely tastes what it's supposed to taste. Not watered-down or too much. It feels like Im back in the Philippines eating sisig during lunch in University.",
     rating: 5,
   },
   {
     id: 6,
-    name: "Carlos Mendoza",
+    name: "T C",
     review:
-      "Outstanding Filipino restaurant! The flavors are authentic and the atmosphere is so welcoming. Will definitely be back!",
+      "Absolutly delicious Filipino food and friendly service! We had the pork adobo, pancit and spring rolls, all amazing and authentic taste. Good sized portion and value for your money. This place is a gem, will definitely come back!!",
     rating: 5,
   },
 ]

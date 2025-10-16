@@ -10,19 +10,7 @@ export function Footer() {
             <h1 className="text-2xl font-semibold mb-4 text-amber-700">Who we are?</h1>
             <h3 className="text-lg font-semibold text-card-foreground mb-4">Kainan - A Place to Eat</h3>
             <p className="text-muted-foreground text-pretty mb-4">
-              At Kainan, we&apos;re passionate about sharing the bold, authentic flavours of the Philippines.
-              Rooted in tradition and inspired by family recipes, our food is crafted with love and heart in every dish —
-              from our housemade silog marinades and sauces to our indulgent desserts.
-            </p>
-            <p className="text-muted-foreground text-pretty mb-4">
-              Since opening our doors in April 2023, we&apos;ve been warmly embraced by the Filipino community craving for a
-              taste of home and welcomed by locals eager to experience something new and different. Our mission is simple:
-              To introduce, and reintroduce the rich flavours of the Philippines, one dish at a time.
-            </p>
-            <p className="text-muted-foreground text-pretty mb-4">
-              We believe food is more than just a meal — it&apos;s a way to connect; sharing stories to build community.
-              Whether you&apos;re here for a quick bite or sitting through a full meal, the moment you walk through our doors,
-              you instantly become part of our Kainan family.
+              Introduce and re-introduce the flavours of the Philippines, one dish at a time.
             </p>
             <a
               href="https://www.facebook.com/profile.php?id=100091358628559"

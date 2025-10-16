@@ -20,7 +20,7 @@ export function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <Banner />
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="mx-auto px-10 shadow-2xl">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -28,7 +28,7 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 font-semibold text-lg">
             <button
               onClick={() => scrollToSection("home")}
               className="text-foreground hover:text-primary transition-colors"
@@ -36,10 +36,34 @@ export function Navigation() {
               Home
             </button>
             <button
+              onClick={() => scrollToSection("highlights")}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Featured items
+            </button>
+            <button
               onClick={() => scrollToSection("menu")}
               className="text-foreground hover:text-primary transition-colors"
             >
               Menu
+            </button>
+            <button
+              onClick={() => scrollToSection("trays")}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Party trays
+            </button>
+            <button
+              onClick={() => scrollToSection("lookinside")}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              A look inside
+            </button>
+            <button
+              onClick={() => scrollToSection("whoweare")}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Who we are
             </button>
             <button
               onClick={() => scrollToSection("reviews")}
@@ -69,25 +93,49 @@ export function Navigation() {
             <div className="flex flex-col space-y-4">
               <button
                 onClick={() => scrollToSection("home")}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-foreground hover:text-primary transition-colors"
               >
                 Home
               </button>
               <button
+                onClick={() => scrollToSection("highlights")}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                Featured items
+              </button>
+              <button
                 onClick={() => scrollToSection("menu")}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-foreground hover:text-primary transition-colors"
               >
                 Menu
               </button>
               <button
+                onClick={() => scrollToSection("trays")}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                Party trays
+              </button>
+              <button
+                onClick={() => scrollToSection("lookinside")}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                A look inside
+              </button>
+              <button
+                onClick={() => scrollToSection("whoweare")}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                Who we are
+              </button>
+              <button
                 onClick={() => scrollToSection("reviews")}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-foreground hover:text-primary transition-colors"
               >
                 Reviews
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-left text-foreground hover:text-primary transition-colors"
+                className="text-foreground hover:text-primary transition-colors"
               >
                 Contact
               </button>
