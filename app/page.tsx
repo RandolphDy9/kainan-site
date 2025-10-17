@@ -8,7 +8,6 @@ import ImageCarousel from "@/components/image-carousel"
 import LookInside from "@/components/look-inside-section"
 import TraySection from "@/components/tray-section"
 import WhoWeAre from "@/components/who-we-are"
-import FeaturesMobile from "@/components/featues-mobile"
 
 export default function Home() {
   return (
