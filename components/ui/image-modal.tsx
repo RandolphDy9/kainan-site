@@ -32,40 +32,41 @@ export function ImageModal({ src, alt, isOpen, onClose }: ImageModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 md:p-4"
-      onClick={onClose} // Click outside closes modal
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
     >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      {/* FIX 1: Remove backdrop-blur-sm - it crashes mobile Safari */}
+      <div className="absolute inset-0 bg-black/90" />
 
       {/* Modal Content */}
       <div
-        className="relative z-10 w-full h-full max-w-[95vw] max-h-[95vh] overflow-auto flex flex-col items-center"
-        onClick={onClose} // Prevent closing when clicking inside
+        className="relative z-10 max-w-7xl max-h-[90vh] w-full"
+        onClick={(e) => e.stopPropagation()} // FIX 2: Prevent closing when clicking image
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 md:top-4 md:right-4 z-20 text-white hover:text-gray-300 transition-colors duration-200"
+          className="absolute -top-12 right-0 md:top-2 md:right-2 z-20 text-white hover:text-gray-300 transition-colors duration-200 bg-black/50 rounded-full p-2"
           aria-label="Close modal"
         >
-          <X size={32} />
+          <X size={28} />
         </button>
 
-        {/* Image */}
-        <div className="relative w-full min-h-screen md:min-h-[150vh] flex-shrink-0">
+        {/* FIX 3: Use max-h instead of min-h, remove the excessive height */}
+        <div className="relative w-full h-[80vh] md:h-[85vh]">
           <Image
             src={src}
             alt={alt}
             fill
-            className="object-contain w-full h-full"
-            priority
+            className="object-contain"
+            sizes="95vw"
+            quality={85}
           />
         </div>
 
         {/* Caption */}
         {alt && (
-          <p className="text-white text-center mt-4 mb-6 text-sm opacity-90">
+          <p className="text-white text-center mt-4 text-sm md:text-base opacity-90">
             {alt}
           </p>
         )}
