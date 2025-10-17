@@ -1,26 +1,26 @@
 import { Navigation } from "@/components/navigation"
-// import { HeroSection } from "@/components/hero-section"
-// import { MenuSection } from "@/components/menu-section"
-// import { ReviewsSection } from "@/components/reviews-section"
-// import { ContactSection } from "@/components/contact-section"
+import { HeroSection } from "@/components/hero-section"
+import { MenuSection } from "@/components/menu-section"
+import { ReviewsSection } from "@/components/reviews-section"
+import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 // import ImageCarousel from "@/components/image-carousel"
-// import LookInside from "@/components/look-inside-section"
-// import TraySection from "@/components/tray-section"
-// import WhoWeAre from "@/components/who-we-are"
+import LookInside from "@/components/look-inside-section"
+import TraySection from "@/components/tray-section"
+import WhoWeAre from "@/components/who-we-are"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navigation />
 
-      {/* <div id="home">
+      <div id="home">
         <HeroSection />
       </div>
 
-      <div id="highlights">
+      {/* <div id="highlights">
         <ImageCarousel />
-      </div>
+      </div> */}
 
       <div id="menu">
         <MenuSection />
@@ -44,7 +44,7 @@ export default function Home() {
 
       <div id="contact">
         <ContactSection />
-      </div> */}
+      </div>
 
       <Footer />
     </main>
