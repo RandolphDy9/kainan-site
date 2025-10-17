@@ -103,9 +103,9 @@ export default function ImageCarousel() {
 
   return (
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
-      {/* Decorative background */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      {/* Decorative background - hide heavy blurs on mobile to avoid iOS crashes */}
+      <div className="hidden sm:block absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="hidden sm:block absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
         <div className="relative max-w-6xl mx-auto">
           {/* Header */}
@@ -170,7 +170,7 @@ export default function ImageCarousel() {
                     flex: `0 0 ${100 / slidesPerView}%`,
                   }}
                 >
-                  <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
+                  <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
                     <Image
                       src={image.src}
                       alt={`Food ${index + 1}`}
