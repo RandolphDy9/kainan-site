@@ -14,7 +14,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
 
-      <div id="home">
+      {/* <div id="home">
         <HeroSection />
       </div>
 
@@ -44,7 +44,7 @@ export default function Home() {
 
       <div id="contact">
         <ContactSection />
-      </div>
+      </div> */}
 
       <Footer />
     </main>
