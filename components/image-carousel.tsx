@@ -17,6 +17,7 @@ export default function ImageCarousel() {
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-9_onji2s.jpg" },
   ];
 
+  // Slider state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(3);
 
@@ -34,7 +35,8 @@ export default function ImageCarousel() {
 
   // Clamp currentIndex when slidesPerView changes
   useEffect(() => {
-    setCurrentIndex(prev => Math.min(prev, Math.max(0, foodImages.length - slidesPerView)));
+    const safeSlides = Math.max(1, slidesPerView);
+    setCurrentIndex(prev => Math.min(prev, foodImages.length - safeSlides));
   }, [slidesPerView]);
 
   const safeSlidesPerView = Math.max(1, slidesPerView);
@@ -44,107 +46,78 @@ export default function ImageCarousel() {
   const prev = () => setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
   const goToSlide = (index: number) => setCurrentIndex(Math.min(index, maxIndex));
 
-  // Image modal
+  // Modal state
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const handleImageClick = (src: string, alt: string) => setSelectedImage({ src, alt });
   const closeModal = () => setSelectedImage(null);
 
-  // Swipe support
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [touchEndX, setTouchEndX] = useState<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
-  const handleTouchMove = (e: React.TouchEvent) => setTouchEndX(e.touches[0].clientX);
-  const handleTouchEnd = () => {
-    if (touchStartX === null || touchEndX === null) return;
-    const distance = touchStartX - touchEndX;
-    if (distance > 50) next();
-    else if (distance < -50) prev();
-    setTouchStartX(null);
-    setTouchEndX(null);
-  };
-
   return (
-    <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
-      {/* Decorative circles */}
-      <div className="hidden lg:block absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="hidden lg:block absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+    <section className="relative py-20 px-4 bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
+      {/* Header */}
+      <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
+        <h2 className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
+            dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
+            bg-clip-text text-transparent text-4xl sm:text-5xl md:text-7xl leading-tight max-w-5xl mx-auto">
+          Featured menu items.
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
+          Highlighting dishes that will always satisfy
+        </p>
+      </div>
 
-      <div className="relative max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20 px-4 sm:px-6 lg:px-8">
-          <h2 className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
-              dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
-              bg-clip-text text-transparent 
-              text-4xl sm:text-5xl md:text-7xl
-              leading-tight max-w-5xl mx-auto">
-            Featured menu items.
-          </h2>
-          <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
-            text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
-            Highlighting dishes that will always satisfy
-          </p>
-        </div>
+      {/* Desktop Slider */}
+      <div className="hidden md:block relative max-w-6xl mx-auto">
+        {/* Left Arrow */}
+        <button
+          type="button"
+          onClick={prev}
+          className="absolute -left-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-3 hover:bg-gray-50 transition-all duration-200"
+          aria-label="Previous slide"
+        >
+          <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
 
-        {/* Carousel */}
-        <div className="relative">
-          {/* Left Arrow */}
-          <button
-            type="button"
-            onClick={prev}
-            className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-2 md:p-3 hover:bg-gray-50 transition-all duration-200"
-            aria-label="Previous slide"
+        {/* Slider Container */}
+        <div className="w-full overflow-hidden rounded-lg">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${(currentIndex * 100) / safeSlidesPerView}%)` }}
           >
-            <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m15 18-6-6 6-6" />
-            </svg>
-          </button>
-
-          {/* Slider */}
-          <div className="w-full overflow-hidden rounded-lg">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${(currentIndex * 100) / safeSlidesPerView}%)` }}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {foodImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="px-2"
-                  style={{ minWidth: `${100 / safeSlidesPerView}%`, flex: `0 0 ${100 / safeSlidesPerView}%` }}
-                >
-                  <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
-                    <Image
-                      src={image.src}
-                      alt={`Food ${index + 1}`}
-                      width={400}
-                      height={380}
-                      className="object-contain w-full h-full"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      loading="lazy"
-                      quality={50}
-                      onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
-                    />
-                  </div>
+            {foodImages.map((image, index) => (
+              <div
+                key={index}
+                className="px-2"
+                style={{ minWidth: `${100 / safeSlidesPerView}%`, flex: `0 0 ${100 / safeSlidesPerView}%` }}
+              >
+                <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
+                  <Image
+                    src={image.src}
+                    alt={`Food ${index + 1}`}
+                    width={400}
+                    height={400}
+                    className="object-contain w-full h-full"
+                    loading="lazy"
+                    onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
+                  />
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-
-          {/* Right Arrow */}
-          <button
-            type="button"
-            onClick={next}
-            className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-2 md:p-3 hover:bg-gray-50 transition-all duration-200"
-            aria-label="Next slide"
-          >
-            <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m9 18 6-6-6-6" />
-            </svg>
-          </button>
         </div>
+
+        {/* Right Arrow */}
+        <button
+          type="button"
+          onClick={next}
+          className="absolute -right-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-3 hover:bg-gray-50 transition-all duration-200"
+          aria-label="Next slide"
+        >
+          <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
 
         {/* Pagination Dots */}
         <div className="flex justify-center mt-6 gap-x-2">
@@ -161,17 +134,34 @@ export default function ImageCarousel() {
             />
           ))}
         </div>
-
-        {/* Image Modal */}
-        {selectedImage && (
-          <ImageModal
-            src={selectedImage.src}
-            alt={selectedImage.alt}
-            isOpen={!!selectedImage}
-            onClose={closeModal}
-          />
-        )}
       </div>
+
+      {/* Mobile 2-column grid */}
+      <div className="grid grid-cols-2 gap-2 md:hidden max-w-4xl mx-auto">
+        {foodImages.slice(0, 6).map((image, index) => (
+          <div key={index} className="relative w-full h-40 rounded-lg overflow-hidden bg-gray-100">
+            <Image
+              src={image.src}
+              alt={`Food ${index + 1}`}
+              width={400}
+              height={400}
+              className="object-cover w-full h-full"
+              loading="lazy"
+              onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <ImageModal
+          src={selectedImage.src}
+          alt={selectedImage.alt}
+          isOpen={!!selectedImage}
+          onClose={closeModal}
+        />
+      )}
     </section>
   );
 }
