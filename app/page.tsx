@@ -4,7 +4,7 @@ import { MenuSection } from "@/components/menu-section"
 import { ReviewsSection } from "@/components/reviews-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-// import ImageCarousel from "@/components/image-carousel"
+import ImageCarousel from "@/components/image-carousel"
 import LookInside from "@/components/look-inside-section"
 import TraySection from "@/components/tray-section"
 import WhoWeAre from "@/components/who-we-are"
@@ -18,9 +18,9 @@ export default function Home() {
         <HeroSection />
       </div>
 
-      {/* <div id="highlights">
+      <div id="highlights">
         <ImageCarousel />
-      </div> */}
+      </div>
 
       <div id="menu">
         <MenuSection />

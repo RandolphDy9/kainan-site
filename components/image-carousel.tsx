@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { ImageModal } from "./ui/image-modal";
 
@@ -35,42 +35,39 @@ export default function ImageCarousel() {
 
   const maxIndex = Math.max(0, foodImages.length - slidesPerView);
   
-  const next = () => {
+  // CRITICAL FIX: Use useCallback to memoize the next function
+  const next = useCallback(() => {
     setCurrentIndex(prev => {
-      if (prev >= maxIndex) {
+      const currentMax = Math.max(0, foodImages.length - slidesPerView);
+      if (prev >= currentMax) {
         return 0;
       }
       return prev + 1;
     });
-  };
+  }, [slidesPerView, foodImages.length]);
   
-  const prev = () => {
+  const prev = useCallback(() => {
     setCurrentIndex(prev => {
+      const currentMax = Math.max(0, foodImages.length - slidesPerView);
       if (prev <= 0) {
-        return maxIndex;
+        return currentMax;
       }
       return prev - 1;
     });
-  };
+  }, [slidesPerView, foodImages.length]);
   
   const goToSlide = (index: number) => setCurrentIndex(Math.min(index, maxIndex));
 
-  // FIX: Auto-slide with ref to prevent memory leaks
+  // CRITICAL FIX: Auto-slide that doesn't access window inside interval
   useEffect(() => {
     // Clear any existing interval
     if (autoSlideRef.current) {
       clearInterval(autoSlideRef.current);
     }
 
-    // Create new interval
+    // Create new interval using the memoized next function
     autoSlideRef.current = setInterval(() => {
-      setCurrentIndex(prev => {
-        const currentMax = Math.max(0, foodImages.length - (window.innerWidth < 768 ? 1 : 3));
-        if (prev >= currentMax) {
-          return 0;
-        }
-        return prev + 1;
-      });
+      next();
     }, 7000);
 
     return () => {
@@ -78,7 +75,7 @@ export default function ImageCarousel() {
         clearInterval(autoSlideRef.current);
       }
     };
-  }, []); // Empty dependency - only run once
+  }, [next]); // Use next as dependency since it's memoized
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
@@ -187,7 +184,7 @@ export default function ImageCarousel() {
                         fill
                         className="object-contain"
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        priority={index < slidesPerView}
+                        priority={index < 3}
                         onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
                       />
                     </div>
