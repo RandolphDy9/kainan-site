@@ -5,9 +5,6 @@ import Image from "next/image";
 import { ImageModal } from "./ui/image-modal";
 
 export default function ImageCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [slidesPerView, setSlidesPerView] = useState(3);
-
   const foodImages = [
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-1_enl1kd.jpg" },
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-2_wczysf.png" },
@@ -20,7 +17,10 @@ export default function ImageCarousel() {
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-9_onji2s.jpg" },
   ];
 
-  // Handle resize for responsive slides
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(3);
+
+  // Responsive slidesPerView
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
@@ -37,13 +37,14 @@ export default function ImageCarousel() {
     setCurrentIndex(prev => Math.min(prev, Math.max(0, foodImages.length - slidesPerView)));
   }, [slidesPerView]);
 
-  const maxIndex = Math.max(0, foodImages.length - slidesPerView);
+  const safeSlidesPerView = Math.max(1, slidesPerView);
+  const maxIndex = Math.max(0, foodImages.length - safeSlidesPerView);
 
   const next = () => setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
   const prev = () => setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
   const goToSlide = (index: number) => setCurrentIndex(Math.min(index, maxIndex));
 
-  // Modal
+  // Image modal
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const handleImageClick = (src: string, alt: string) => setSelectedImage({ src, alt });
   const closeModal = () => setSelectedImage(null);
@@ -57,15 +58,15 @@ export default function ImageCarousel() {
   const handleTouchEnd = () => {
     if (touchStartX === null || touchEndX === null) return;
     const distance = touchStartX - touchEndX;
-    if (distance > 50) next();       // swipe left → next
-    else if (distance < -50) prev(); // swipe right → prev
+    if (distance > 50) next();
+    else if (distance < -50) prev();
     setTouchStartX(null);
     setTouchEndX(null);
   };
 
   return (
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
-      {/* Decorative blur circles */}
+      {/* Decorative circles */}
       <div className="hidden lg:block absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="hidden lg:block absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
@@ -79,14 +80,13 @@ export default function ImageCarousel() {
               leading-tight max-w-5xl mx-auto">
             Featured menu items.
           </h2>
-
           <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
             text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
             Highlighting dishes that will always satisfy
           </p>
         </div>
 
-        {/* Carousel Container */}
+        {/* Carousel */}
         <div className="relative">
           {/* Left Arrow */}
           <button
@@ -104,7 +104,7 @@ export default function ImageCarousel() {
           <div className="w-full overflow-hidden rounded-lg">
             <div
               className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)` }}
+              style={{ transform: `translateX(-${(currentIndex * 100) / safeSlidesPerView}%)` }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -113,18 +113,18 @@ export default function ImageCarousel() {
                 <div
                   key={index}
                   className="px-2"
-                  style={{ minWidth: `${100 / slidesPerView}%`, flex: `0 0 ${100 / slidesPerView}%` }}
+                  style={{ minWidth: `${100 / safeSlidesPerView}%`, flex: `0 0 ${100 / safeSlidesPerView}%` }}
                 >
                   <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
                     <Image
                       src={image.src}
                       alt={`Food ${index + 1}`}
-                      width={500}
+                      width={400}
                       height={380}
                       className="object-contain w-full h-full"
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      loading={index < 3 ? "eager" : "lazy"}
-                      quality={70}
+                      loading="lazy"
+                      quality={50}
                       onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
                     />
                   </div>
