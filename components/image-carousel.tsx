@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ImageModal } from "./ui/image-modal";
 
@@ -9,6 +9,7 @@ export default function ImageCarousel() {
   const [slidesPerView, setSlidesPerView] = useState(3);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
 
   const foodImages = [
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-1_enl1kd.jpg" },
@@ -22,6 +23,7 @@ export default function ImageCarousel() {
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-9_onji2s.jpg" },
   ];
 
+  // Handle resize - separate from auto-slide
   useEffect(() => {
     const handleResize = () => {
       setSlidesPerView(window.innerWidth < 768 ? 1 : 3);
@@ -35,7 +37,6 @@ export default function ImageCarousel() {
   
   const next = () => {
     setCurrentIndex(prev => {
-      // If at the end, loop back to the beginning
       if (prev >= maxIndex) {
         return 0;
       }
@@ -45,7 +46,6 @@ export default function ImageCarousel() {
   
   const prev = () => {
     setCurrentIndex(prev => {
-      // If at the beginning, loop to the end
       if (prev <= 0) {
         return maxIndex;
       }
@@ -55,20 +55,30 @@ export default function ImageCarousel() {
   
   const goToSlide = (index: number) => setCurrentIndex(Math.min(index, maxIndex));
 
-  // Auto-slide effect
+  // FIX: Auto-slide with ref to prevent memory leaks
   useEffect(() => {
-    const autoSlideInterval = setInterval(() => {
+    // Clear any existing interval
+    if (autoSlideRef.current) {
+      clearInterval(autoSlideRef.current);
+    }
+
+    // Create new interval
+    autoSlideRef.current = setInterval(() => {
       setCurrentIndex(prev => {
-        // If at the end, loop back to the beginning
-        if (prev >= maxIndex) {
+        const currentMax = Math.max(0, foodImages.length - (window.innerWidth < 768 ? 1 : 3));
+        if (prev >= currentMax) {
           return 0;
         }
         return prev + 1;
       });
     }, 7000);
 
-    return () => clearInterval(autoSlideInterval);
-  }, [maxIndex]);
+    return () => {
+      if (autoSlideRef.current) {
+        clearInterval(autoSlideRef.current);
+      }
+    };
+  }, []); // Empty dependency - only run once
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
@@ -105,30 +115,30 @@ export default function ImageCarousel() {
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
       {/* Decorative background - hide heavy blurs on mobile to avoid iOS crashes */}
       <div className="hidden sm:block absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="hidden sm:block absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="hidden sm:block absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-20 px-4 sm:px-6 lg:px-8">
-            <h2
-              className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
-                dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
-                bg-clip-text text-transparent 
-                text-4xl sm:text-5xl md:text-7xl
-                leading-tight max-w-5xl mx-auto"
-            >
-              Featured menu items.
-            </h2>
+      <div className="relative max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-20 px-4 sm:px-6 lg:px-8">
+          <h2
+            className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
+              dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
+              bg-clip-text text-transparent 
+              text-4xl sm:text-5xl md:text-7xl
+              leading-tight max-w-5xl mx-auto"
+          >
+            Featured menu items.
+          </h2>
 
-            <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
-              text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
-              Highlighting dishes that will always satisfy
-            </p>
-          </div>
+          <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
+            text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
+            Highlighting dishes that will always satisfy
+          </p>
+        </div>
 
         {/* Carousel Container with Navigation Buttons */}
         <div className="relative">
-          {/* Left Arrow - Hidden on mobile, positioned outside carousel on desktop */}
+          {/* Left Arrow */}
           <button
             type="button"
             onClick={prev}
@@ -154,40 +164,40 @@ export default function ImageCarousel() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-          <div className="relative min-h-96">
-            <div
-              className="flex transition-transform duration-700 ease-in-out"
-              style={{
-                transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)`,
-              }}
-            >
-              {foodImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="px-2"
-                  style={{
-                    minWidth: `${100 / slidesPerView}%`,
-                    flex: `0 0 ${100 / slidesPerView}%`,
-                  }}
-                >
-                  <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
-                    <Image
-                      src={image.src}
-                      alt={`Food ${index + 1}`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      priority={index < slidesPerView}
-                      onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
-                    />
+            <div className="relative min-h-96">
+              <div
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{
+                  transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)`,
+                }}
+              >
+                {foodImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="px-2"
+                    style={{
+                      minWidth: `${100 / slidesPerView}%`,
+                      flex: `0 0 ${100 / slidesPerView}%`,
+                    }}
+                  >
+                    <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
+                      <Image
+                        src={image.src}
+                        alt={`Food ${index + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={index < slidesPerView}
+                        onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-          {/* Right Arrow - Hidden on mobile, positioned outside carousel on desktop */}
+          {/* Right Arrow */}
           <button
             type="button"
             onClick={next}
@@ -208,7 +218,7 @@ export default function ImageCarousel() {
           </button>
         </div>
 
-        {/* Pagination Dots (below carousel) */}
+        {/* Pagination Dots */}
         <div className="flex justify-center mt-6 gap-x-2">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
