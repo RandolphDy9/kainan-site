@@ -97,12 +97,12 @@ export function Navigation() {
               >
                 Home
               </button>
-              <button
+              {/* <button
                 onClick={() => scrollToSection("highlights")}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Featured items
-              </button>
+              </button> */}
               <button
                 onClick={() => scrollToSection("menu")}
                 className="text-foreground hover:text-primary transition-colors"
