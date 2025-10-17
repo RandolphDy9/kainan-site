@@ -9,22 +9,22 @@ const menuPages = [
   {
     id: 1,
     title: "Menu 1",
-    image: "/images/menu/menu-1.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712433/menu-1_u3lowl.png",
   },
   {
     id: 2,
     title: "Menu 2",
-    image: "/images/menu/menu-2.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712434/menu-2_ouvvqf.png",
   },
   {
     id: 3,
     title: "Menu 3",
-    image: "/images/menu/menu-3.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712437/menu-3_ukn9i8.png",
   },
   {
     id: 4,
     title: "Menu 4",
-    image: "/images/menu/menu-4.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712433/menu-4_sotlfr.png",
   },
 ]
 

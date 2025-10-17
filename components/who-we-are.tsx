@@ -40,20 +40,20 @@ const WhoWeAre = () => {
           <div className="flex flex-col md:flex-row gap-12">
             <div className="relative w-full h-[400px] md:h-[700px] rounded-lg overflow-hidden flex items-center justify-center cursor-pointer">
               <Image
-                src="/images/who-we-are.png"
+                src="https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712978/who-we-are_zyjjew.png"
                 alt="who-we-are-image"
                 fill
                 className="object-contain"
-                onClick={() => handleImageClick("/images/who-we-are.png", "who-we-are-image")}
+                onClick={() => handleImageClick("https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712978/who-we-are_zyjjew.png", "who-we-are-image")}
               />
             </div>
             <div className="relative w-full h-[400px] md:h-[700px] rounded-lg overflow-hidden flex items-center justify-center cursor-pointer">
               <Image
-                src="/images/customers.png"
+                src="https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712926/customers-min_kxjycn.png"
                 alt="customers-image"
                 fill
                 className="object-contain"
-                onClick={() => handleImageClick("/images/customers.png", "customers-image")}
+                onClick={() => handleImageClick("https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712926/customers-min_kxjycn.png", "customers-image")}
               />
             </div>
           </div>

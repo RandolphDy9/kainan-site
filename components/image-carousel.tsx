@@ -11,15 +11,15 @@ export default function ImageCarousel() {
   const [touchEnd, setTouchEnd] = useState(0);
 
   const foodImages = [
-    { src: "/images/highlights/food-1.jpg" },
-    { src: "/images/highlights/food-2.png" },
-    { src: "/images/highlights/food-3.jpg" },
-    { src: "/images/highlights/food-4.jpg" },
-    { src: "/images/highlights/food-5.png" },
-    { src: "/images/highlights/food-6.jpg" },
-    { src: "/images/highlights/food-7.jpg" },
-    { src: "/images/highlights/food-8.png" },
-    { src: "/images/highlights/food-9.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-1_enl1kd.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-2_wczysf.png" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-3_xuozkf.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-4_dsynkq.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-5_y9hz0v.png" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712137/food-6_td5jbr.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712137/food-7_khrs87.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-8_idq6gy.png" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-9_onji2s.jpg" },
   ];
 
   useEffect(() => {
