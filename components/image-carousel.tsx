@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -20,10 +20,10 @@ export default function ImageCarousel() {
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-9_onji2s.jpg" },
   ];
 
-  // Handle resize
+  // Handle resize for responsive slides
   useEffect(() => {
     const handleResize = () => {
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         setSlidesPerView(window.innerWidth < 768 ? 1 : 3);
       }
     };
@@ -32,31 +32,40 @@ export default function ImageCarousel() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Clamp currentIndex when slidesPerView changes
+  useEffect(() => {
+    setCurrentIndex(prev => Math.min(prev, Math.max(0, foodImages.length - slidesPerView)));
+  }, [slidesPerView]);
+
   const maxIndex = Math.max(0, foodImages.length - slidesPerView);
-  
-  const next = () => {
-    setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-  };
-  
-  const prev = () => {
-    setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
-  };
-  
+
+  const next = () => setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
+  const prev = () => setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
   const goToSlide = (index: number) => setCurrentIndex(Math.min(index, maxIndex));
 
+  // Modal
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const handleImageClick = (src: string, alt: string) => setSelectedImage({ src, alt });
+  const closeModal = () => setSelectedImage(null);
 
-  const handleImageClick = (src: string, alt: string) => {
-    setSelectedImage({ src, alt });
-  };
+  // Swipe support
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
-  const closeModal = () => {
-    setSelectedImage(null);
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
+  const handleTouchMove = (e: React.TouchEvent) => setTouchEndX(e.touches[0].clientX);
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > 50) next();       // swipe left → next
+    else if (distance < -50) prev(); // swipe right → prev
+    setTouchStartX(null);
+    setTouchEndX(null);
   };
 
   return (
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
-      {/* NO blur effects on mobile */}
+      {/* Decorative blur circles */}
       <div className="hidden lg:block absolute top-0 left-0 w-96 h-96 bg-amber-200/20 dark:bg-amber-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="hidden lg:block absolute bottom-0 right-0 w-96 h-96 bg-orange-200/20 dark:bg-orange-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
@@ -83,7 +92,7 @@ export default function ImageCarousel() {
           <button
             type="button"
             onClick={prev}
-            className="hidden md:block absolute -left-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-3 hover:bg-gray-50 transition-all duration-200"
+            className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-2 md:p-3 hover:bg-gray-50 transition-all duration-200"
             aria-label="Previous slide"
           >
             <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -91,37 +100,36 @@ export default function ImageCarousel() {
             </svg>
           </button>
 
-          <div className="w-full overflow-hidden bg-white rounded-lg">
-            <div className="relative min-h-[400px]">
-              <div
-                className="flex transition-transform duration-500 ease-out"
-                style={{
-                  transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)`,
-                }}
-              >
-                {foodImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className="px-2"
-                    style={{
-                      minWidth: `${100 / slidesPerView}%`,
-                      flex: `0 0 ${100 / slidesPerView}%`,
-                    }}
-                  >
-                    <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
-                      <Image
-                        src={image.src}
-                        alt={`Food ${index + 1}`}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        loading={index < 3 ? "eager" : "lazy"}
-                        onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
-                      />
-                    </div>
+          {/* Slider */}
+          <div className="w-full overflow-hidden rounded-lg">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${(currentIndex * 100) / slidesPerView}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {foodImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="px-2"
+                  style={{ minWidth: `${100 / slidesPerView}%`, flex: `0 0 ${100 / slidesPerView}%` }}
+                >
+                  <div className="relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center cursor-pointer">
+                    <Image
+                      src={image.src}
+                      alt={`Food ${index + 1}`}
+                      width={500}
+                      height={380}
+                      className="object-contain w-full h-full"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      loading={index < 3 ? "eager" : "lazy"}
+                      quality={70}
+                      onClick={() => handleImageClick(image.src, `Food ${index + 1}`)}
+                    />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -129,7 +137,7 @@ export default function ImageCarousel() {
           <button
             type="button"
             onClick={next}
-            className="hidden md:block absolute -right-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-3 hover:bg-gray-50 transition-all duration-200"
+            className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg border border-gray-200 rounded-full p-2 md:p-3 hover:bg-gray-50 transition-all duration-200"
             aria-label="Next slide"
           >
             <svg className="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
