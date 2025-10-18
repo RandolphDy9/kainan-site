@@ -6,7 +6,7 @@ import { ImageModal } from "./ui/image-modal";
 export default function TraySection() {
   const foodImages = [
     { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712528/tray-menu_tfhabo.png", alt: "Tray menu" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712779/full-trays-min_jbhrld.png", alt: "Trays" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760755686/full-trays-min_jbhrld_j947vn.jpg", alt: "Trays" },
   ];
 
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);

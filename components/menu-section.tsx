@@ -9,22 +9,22 @@ const menuPages = [
   {
     id: 1,
     title: "Menu 1",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712433/menu-1_u3lowl.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756876/MENU_1_v21vld.jpg",
   },
   {
     id: 2,
     title: "Menu 2",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712434/menu-2_ouvvqf.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756875/MENU_2_ljzsqn.jpg",
   },
   {
     id: 3,
     title: "Menu 3",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712437/menu-3_ukn9i8.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756872/MENU_3_vn7l1h.jpg",
   },
   {
     id: 4,
     title: "Menu 4",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712433/menu-4_sotlfr.png",
+    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756873/MENU_4_n87sp5.jpg",
   },
 ]
 

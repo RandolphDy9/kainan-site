@@ -6,7 +6,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[url('/images/hero3-bg.jpeg')] bg-cover bg-center" />
 
       <div className="relative z-10 px-4 max-w-4xl mx-auto">
-        <div className="bg-gradient-to-t from-black/40 to-transparent sm:backdrop-blur-md rounded-2xl p-6 sm:px-20 sm:py-8 text-center text-white shadow-xl">
+        <div className="bg-gradient-to-b from-black/40 to-transparent backdrop-blur-md rounded-2xl p-6 sm:px-20 sm:py-8 text-center text-white shadow-xl">
           <div className="mb-6">
             <Image
               src="/images/logo.png"

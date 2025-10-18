@@ -19,9 +19,7 @@ export default function Home() {
       </div>
 
       <div id="highlights">
-        <div className="hidden md:block">
-          <ImageCarousel />
-        </div>
+        <ImageCarousel />
       </div>
 
       <div id="menu">

@@ -6,15 +6,15 @@ import { ImageModal } from "./ui/image-modal";
 
 export default function ImageCarousel() {
   const foodImages = [
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-1_enl1kd.jpg" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-2_wczysf.png" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-3_xuozkf.jpg" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-4_dsynkq.jpg" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712135/food-5_y9hz0v.png" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712137/food-6_td5jbr.jpg" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712137/food-7_khrs87.jpg" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-8_idq6gy.png" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712136/food-9_onji2s.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756435/1-1_zussnu.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756436/2_scgfjj.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756385/3-1_fnmhfl.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756429/4-1_elwbbp.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756299/5-1_gldog5.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756300/6-1_njt5sn.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756166/7-1_reuutx.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756163/8_hb8qeb.jpg" },
+    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756164/9-1_ebyg12.jpg" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
