@@ -1,16 +1,23 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Clock, Facebook, Dog, TreePine, ParkingSquare } from "lucide-react"
-import Image from "next/image"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  MapPin,
+  Clock,
+  Facebook,
+  Dog,
+  TreePine,
+  ParkingSquare,
+} from "lucide-react";
+import Image from "next/image";
 
 const hours = [
-  { day: "Monday", time: "9 a.m.–8 p.m." },
-  { day: "Tuesday", time: "9 a.m.–8 p.m." },
-  { day: "Wednesday", time: "9 a.m.–8 p.m." },
-  { day: "Thursday", time: "9 a.m.–8 p.m." },
-  { day: "Friday", time: "9 a.m.–8 p.m." },
-  { day: "Saturday", time: "9 a.m.–8 p.m." },
+  { day: "Monday", time: "11 AM – 7 PM" },
+  { day: "Tuesday", time: "11 AM – 7 PM" },
+  { day: "Wednesday", time: "11 AM – 7 PM" },
+  { day: "Thursday", time: "11 AM – 7 PM" },
+  { day: "Friday", time: "11 AM – 7 PM" },
+  { day: "Saturday", time: "11 AM – 7 PM" },
   { day: "Sunday", time: "Closed" },
-]
+];
 
 export function ContactSection() {
   return (
@@ -60,7 +67,10 @@ export function ContactSection() {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Phone:</p>
-                <a href="tel:+15063510182" className="text-primary hover:text-primary/80 transition-colors">
+                <a
+                  href="tel:+15063510182"
+                  className="text-primary hover:text-primary/80 transition-colors"
+                >
                   (506) 351-0182
                 </a>
               </div>
@@ -100,8 +110,16 @@ export function ContactSection() {
               <div className="space-y-2">
                 {hours.map((schedule) => (
                   <div key={schedule.day} className="flex justify-between">
-                    <span className="font-medium text-foreground">{schedule.day}</span>
-                    <span className={`${schedule.time === "Closed" ? "text-secondary" : "text-muted-foreground"}`}>
+                    <span className="font-medium text-foreground">
+                      {schedule.day}
+                    </span>
+                    <span
+                      className={`${
+                        schedule.time === "Closed"
+                          ? "text-secondary"
+                          : "text-muted-foreground"
+                      }`}
+                    >
                       {schedule.time}
                     </span>
                   </div>
@@ -121,7 +139,12 @@ export function ContactSection() {
             <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
                 <TreePine className="w-5 h-5 text-accent" />
-                <span className="text-foreground">Outdoor seating <br/><span className="text-muted-foreground text-xs">(patio open during summer season only)</span></span>
+                <span className="text-foreground">
+                  Outdoor seating <br />
+                  <span className="text-muted-foreground text-xs">
+                    (patio open during summer season only)
+                  </span>
+                </span>
               </div>
               <div className="flex items-center gap-3">
                 <Dog className="w-5 h-5 text-accent" />
@@ -129,7 +152,12 @@ export function ContactSection() {
               </div>
               <div className="flex items-center gap-3">
                 <ParkingSquare className="w-8 h-8 text-accent" />
-                <span className="text-foreground">Customer parking available <span className="text-muted-foreground text-xs">(entrance at the side of the building)</span></span>
+                <span className="text-foreground">
+                  Customer parking available{" "}
+                  <span className="text-muted-foreground text-xs">
+                    (entrance at the side of the building)
+                  </span>
+                </span>
               </div>
             </CardContent>
           </Card>
@@ -157,11 +185,13 @@ export function ContactSection() {
                   className="w-full h-auto rounded-lg border"
                 />
               </a>
-              <p className="text-sm text-muted-foreground mt-2 text-center">Click to open in Google Maps</p>
+              <p className="text-sm text-muted-foreground mt-2 text-center">
+                Click to open in Google Maps
+              </p>
             </CardContent>
           </Card>
         </div>
       </div>
     </section>
-  )
+  );
 }

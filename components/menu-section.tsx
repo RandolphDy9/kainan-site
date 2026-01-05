@@ -1,43 +1,50 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
-import { ImageModal } from "./ui/image-modal"
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import { ImageModal } from "./ui/image-modal";
 
 const menuPages = [
   {
     id: 1,
     title: "Menu 1",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756876/MENU_1_v21vld.jpg",
+    image:
+      "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1767638779/PAGE_1_ba4lt7.jpg",
   },
   {
     id: 2,
     title: "Menu 2",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756875/MENU_2_ljzsqn.jpg",
+    image:
+      "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1767638780/PAGE_2_oa0jnn.jpg",
   },
   {
     id: 3,
     title: "Menu 3",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756872/MENU_3_vn7l1h.jpg",
+    image:
+      "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1767638783/PAGE_3_nozagd.jpg",
   },
   {
     id: 4,
     title: "Menu 4",
-    image: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760756873/MENU_4_n87sp5.jpg",
+    image:
+      "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1767638785/PAGE_4_k5vjcs.jpg",
   },
-]
+];
 
 export function MenuSection() {
-  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
   const handleImageClick = (src: string, alt: string) => {
-    setSelectedImage({ src, alt })
-  }
+    setSelectedImage({ src, alt });
+  };
 
   const closeModal = () => {
-    setSelectedImage(null)
-  }
+    setSelectedImage(null);
+  };
 
   return (
     <section id="menu" className="py-16 px-4 bg-background">
@@ -50,8 +57,10 @@ export function MenuSection() {
             </span> */}
 
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
-              There&apos;s something for everyone<br className="hidden md:block" />
-              All day breakfast, Omelettes, Burgers & Fries, Silogs, Sisig, Noodles, Soups, and more
+              There&apos;s something for everyone
+              <br className="hidden md:block" />
+              All day breakfast, Omelettes, Burgers & Fries, Silogs, Sisig,
+              Noodles, Soups, and more
             </h2>
 
             <div className="space-y-1">
@@ -75,7 +84,12 @@ export function MenuSection() {
             >
               <CardContent className="p-0">
                 <div className="relative aspect-[3/4]">
-                  <Image src={page.image || "/placeholder.svg"} alt={page.title} fill className="object-contain" />
+                  <Image
+                    src={page.image || "/placeholder.svg"}
+                    alt={page.title}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -91,8 +105,7 @@ export function MenuSection() {
             onClose={closeModal}
           />
         )}
-
       </div>
     </section>
-  )
+  );
 }

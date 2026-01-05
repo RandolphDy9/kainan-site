@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export function HeroSection() {
   return (
@@ -6,13 +6,13 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[url('/images/hero3-bg.jpeg')] bg-cover bg-center" />
 
       <div className="relative z-10 px-4 max-w-4xl mx-auto">
-        <div className="bg-gradient-to-b from-black/40 to-transparent backdrop-blur-md rounded-2xl p-6 sm:px-20 sm:py-8 text-center text-white shadow-xl">
+        <div className="bg-gradient-to-r from-black/40 via-black/40 to-transparent backdrop-blur-md rounded-2xl p-6 sm:px-20 sm:py-8 text-center text-white shadow-xl">
           <div className="mb-6">
             <Image
-              src="/images/logo.png"
+              src="/images/kainan-logo-outlined.png"
               alt="Kainan - A Place to Eat"
-              width={300}
-              height={200}
+              width={350}
+              height={300}
               className="mx-auto mb-6 drop-shadow-lg"
               priority
             />
@@ -22,7 +22,7 @@ export function HeroSection() {
             Welcome to <span className="text-[#F5B035]">Kainan</span>
           </h1>
 
-          <p className="text-2xl md:text-3xl mb-2 max-w-2xl mx-auto text-white font-bold">
+          <p className="text-2xl md:text-3xl max-w-2xl mx-auto text-white font-bold">
             🇵🇭 Taste the flavours of the Philippines
           </p>
 
@@ -32,5 +32,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

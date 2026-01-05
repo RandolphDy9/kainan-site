@@ -5,13 +5,23 @@ import { ImageModal } from "./ui/image-modal";
 
 export default function TraySection() {
   const foodImages = [
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760712528/tray-menu_tfhabo.png", alt: "Tray menu" },
-    { src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760755686/full-trays-min_jbhrld_j947vn.jpg", alt: "Trays" },
+    {
+      src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1767638909/ptray2_kbe0zt.jpg",
+      alt: "Tray menu",
+    },
+    {
+      src: "https://res.cloudinary.com/dbxxaxhpi/image/upload/v1760755686/full-trays-min_jbhrld_j947vn.jpg",
+      alt: "Trays",
+    },
   ];
 
-  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
-  const openModal = (image: { src: string; alt: string }) => setSelectedImage(image);
+  const openModal = (image: { src: string; alt: string }) =>
+    setSelectedImage(image);
   const closeModal = () => setSelectedImage(null);
 
   return (
@@ -23,24 +33,28 @@ export default function TraySection() {
       <div className="relative max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-20 px-4 sm:px-6 lg:px-8">
-          <h2 className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
+          <h2
+            className="font-extrabold bg-gradient-to-r from-amber-700 via-orange-600 to-amber-700 
             dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 
             bg-clip-text text-transparent 
-            text-4xl sm:text-5xl md:text-7xl leading-tight max-w-5xl mx-auto">
+            text-4xl sm:text-5xl md:text-7xl leading-tight max-w-5xl mx-auto"
+          >
             Food fit for a crowd.
           </h2>
-          <p className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
-            text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium">
-            Whether you&apos;re throwing a small gathering or a big party,
-            let us do the cooking for you.
+          <p
+            className="text-neutral-700 dark:text-neutral-300 mt-2 max-w-3xl mx-auto 
+            text-lg sm:text-xl lg:text-3xl leading-relaxed font-medium"
+          >
+            Whether you&apos;re throwing a small gathering or a big party, let
+            us do the cooking for you.
           </p>
         </div>
 
         {/* Images layout */}
         <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {/* Left (wide image) */}
-          <div 
-            className="md:col-span-2 relative h-[250px] sm:h-[350px] md:h-[500px] bg-[#FEFCE8] border rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
+          <div
+            className="md:col-span-2 relative h-[250px] sm:h-[350px] md:h-[500px] bg-[#FEFCE8] border rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(foodImages[1])}
           >
             <Image
