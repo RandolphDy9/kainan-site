@@ -10,12 +10,12 @@ import {
 import Image from "next/image";
 
 const hours = [
-  { day: "Monday", time: "9 AM – 8 PM" },
-  { day: "Tuesday", time: "9 AM – 8 PM" },
-  { day: "Wednesday", time: "9 AM – 8 PM" },
-  { day: "Thursday", time: "9 AM – 8 PM" },
-  { day: "Friday", time: "9 AM – 8 PM" },
-  { day: "Saturday", time: "9 AM – 8 PM" },
+  { day: "Monday", time: "11 AM – 8 PM" },
+  { day: "Tuesday", time: "11 AM – 8 PM" },
+  { day: "Wednesday", time: "11 AM – 8 PM" },
+  { day: "Thursday", time: "11 AM – 8 PM" },
+  { day: "Friday", time: "11 AM – 8 PM" },
+  { day: "Saturday", time: "11 AM – 8 PM" },
   { day: "Sunday", time: "Closed" },
 ];
 
